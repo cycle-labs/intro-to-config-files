@@ -17,8 +17,8 @@ in the project.
 
 Background: Open browser and login
 # load credentials, web locators, and env data
-If I assign values from config file "combined/local.conf" to variables
-Elsif I assign values from config file "combined/env.conf" to variables
+If I assign values from config file "layeringConfigData/local.conf" to variables
+Elsif I assign values from config file "layeringConfigData/env.conf" to variables
 EndIf
 And I assign values from config file $envFile to variables
 
