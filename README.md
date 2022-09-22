@@ -45,4 +45,29 @@ to provide an example of how to create a simple, readable, dynamic feature with 
 The previous examples were all intended to be stand alone examples. Thus some config data, like the entries for login credentials,
 have been duplicated across each of the folders. But this only for the sake of having isolated examples, and is not required when
 using config files.  In this example, I'll show what it would look like when resusable config entries are abstracted out into a
-root folder and shared amongst multiple sub folders.
+root folder and shared amongst multiple sub folders. The reusable pageObject.conf and credentials.conf file are in the root of this example,
+the sharedConfigData folder. The default.conf file in the parameterizedTest subdirectory refer to these files in the root.  Likewise, the env.conf
+file in the combined subdirectory refer to the same pageObject.conf and credentials.conf in the root sharedConfigData folder.
+The syntax these files use to refer to the config files in the parent directory is as follows.
+```hocon
+include "../credentials.conf"
+include "../pageObjects.conf"
+```
+
+## Important Note
+When the data in your config file is stuctured, such as in either of these examples:
+```hocon
+wms {
+  url = "https://cyclelabs.io/playground"
+  user = ${WMS_USER}
+  pass = ${WMS_PASS}
+}
+wms.user = SUPER
+```
+the created cycle variables will separate the keys with an underscore. So in the above example, you would have three cycle variables:
+wms_url, wms_user, and wms_pass.
+
+## Additional Information
+These examples provide just a brief introduction into how you can structure your data utilizing the config files.
+For more information on other ways to to structure your test data in config files, please see the documentation
+page for the [Human Optimized Config Object Notation](https://github.com/lightbend/config/blob/main/HOCON.md) format.

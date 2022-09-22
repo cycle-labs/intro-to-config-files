@@ -18,7 +18,7 @@
     "SSLValidation" : "Default",
     "KeyMappingFile" : null,
     "LocalReportCustomPath" : null,
-    "VariableBlackListEnabled" : false,
+    "VariableBlackListEnabled" : true,
     "GroupTestFailureStrategy" : "ALL_TESTS",
     "ControlVisPaste" : true,
     "DefaultWithinTerminal" : 100,
@@ -38,7 +38,7 @@
     "PlaylistFailureStrategy" : "ALL_TESTS",
     "CloudTenantName" : "",
     "CloudGrpcPort" : "",
-    "VariableBlackList" : [ ],
+    "VariableBlackList" : [ "password" ],
     "CloudClientId" : "",
     "VariableBlackListMask" : "********",
     "SaveMatchedImages" : false

@@ -1,19 +1,20 @@
-Feature: Layered Data
+Feature: Utilize a combination of config files
 
-In this example, we have a default.conf file which contains login credentials and 
-test data for creating a new order in the grocer.io application. The default test
-data includes an order number, a customer name, and a price in USD. We also have
-ca.conf, euro.conf, and yuan.conf the include the data from default.conf but
-overrides the price data in other currencies. The env.conf contains a setting which
-controls which of these conf files are loaded, so which currency is used when
-the test runs. It has a default value of euro.conf. If we ran the test as is,
-the order would be created in euros.  There is also the ability to create a
-local.conf file which includes env.conf and then overrides the envFile entry so 
-that a different currency is used in the test. Alternatively, we can inject an
-ENV_FILE environement variable to specify a different currency at run time, which
-may be very useful if running the test in a pipeline. In that type of setup, we
-could easily switch between currencies without having to change any of the files
-in the project.
+In this example, we'll pull together pieces from the secrets, parameterizedTest, and
+layeringConfigData examples and illustrate how we can have a simple yet dynamic
+test with cleanly separated and easy to maintain data, which includes credentials,
+locators for the system under test, and test data. The locators will be stored in
+the pageObjects.conf file.  The credentials will be stored in a credentials.conf
+file, or rather the environment variables referenced will be configured there so
+that passwords are not committed to the project files. The default.conf, ca.conf, 
+euro.conf, and yuan.conf file will be used to structure the dynamic test data.
+Finally, the env.conf file will include the credentials and the pageObjects, as well
+as reference the default test data. We can optionally create a local.conf to 
+override any values locally, or inject values via environment variables. By
+combining these into one env.conf, optionally overwritten by a local.conf, we can
+make this test very dynamic while only needing a few easy to read and maintain steps,
+so that the business process being tested still remains clear and distinguishable
+from the test data.
 
 Background: Open browser and login
 # load credentials, web locators, and env data
@@ -49,3 +50,4 @@ Once I do not see element $addOrderModal_addButton in web browser
 Then I see $order_number in web browser within 10 seconds
 And I see $customer_name in web browser within 10 seconds
 And I see $price in web browser within 10 seconds
+
