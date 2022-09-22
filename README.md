@@ -6,8 +6,10 @@ This example Cycle project includes some example use cases of utilizing .conf fi
 
 This is a simple example where credentials are handled in a .conf file rather than being hard-coded in a .feature or .csv file.  In the default.conf file,
 there are just the following entries:
+```hocon
 username = ${GROCER_USER}
 password = ${GROCER_PASS}
+```
 These can be set by having a GROCER_USER and GROCER_PASS environment variable set when Cycle is run. Or utilizing a local.conf file will allow you to 
 provide values locally which aren't committed to any code repository. The feature in the secrets folder demonstrates how this works.
 
@@ -16,8 +18,10 @@ provide values locally which aren't committed to any code repository. The featur
 This is an example where a default value is included for a parameter (the url used in the test, in this example), and it also allows for that value to be
 overridden at run time via an environment variable. This would allow a team to parameterize their tests and inject different values at run time, such as
 when executing a test in a CI/CD pipeline. You may want to inject a QA vs Dev environment values or maybe a different warehouse ID, for example.
+```hocon
 grocer_url = "https://cyclelabs.io/playground"
 grocer_url = ${?GROCER_URL}
+```
 This example also moves locators out of the feature and into a config file.  This may be useful where the steps are the same, but locators may change
 from one version of an application to the next.
 
