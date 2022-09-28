@@ -2,7 +2,7 @@
 
 This example Cycle project includes some example use cases of utilizing .conf files in your features.
 
-Note: To download this project and run the examples it contains, be sure to set the path in your project settings for your Chrome driver location.
+**Note:** To download this project and run the examples it contains, be sure to set the path in your project settings for your Chrome driver location.
 
 ## secrets
 
