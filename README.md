@@ -2,6 +2,8 @@
 
 This example Cycle project includes some example use cases of utilizing .conf files in your features.
 
+Note: To download this project and run the examples it contains, be sure to set the path in your project settings for your Chrome driver location.
+
 ## secrets
 
 This is a simple example where credentials are handled in a .conf file rather than being hard-coded in a .feature or .csv file.  In the default.conf file,
